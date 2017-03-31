@@ -35,7 +35,7 @@ defmodule Fw.Mixfile do
   end
   def application(_target) do
     [mod: {Fw.Application, []},
-     extra_applications: [:logger]]
+     extra_applications: [:logger, :nerves_networking]]
   end
 
   # Dependencies can be Hex packages:
@@ -54,9 +54,19 @@ defmodule Fw.Mixfile do
 
   # Specify target specific dependencies
   def deps("host"), do: []
+  def deps("rpi0") do
+    [{:nerves_runtime, "~> 0.1.0"},
+     {:nerves_system_rpi0, path: "/Users/tmecklem/src/nerves/nerves_system_rpi0", runtime: false},
+     {:nerves_networking, github: "nerves-project/nerves_networking"},
+     {:ui, path: "../ui"},
+     {:elixir_ale, "~> 0.6.0"}]
+  end
   def deps(target) do
     [{:nerves_runtime, "~> 0.1.0"},
-     {:"nerves_system_#{target}", "~> 0.11.0", runtime: false}]
+     {:"nerves_system_#{target}", "~> 0.11.0", runtime: false},
+     {:nerves_networking, github: "nerves-project/nerves_networking"},
+     {:ui, path: "../ui"},
+     {:elixir_ale, "~> 0.6.0"}]
   end
 
   # We do not invoke the Nerves Env when running on the Host
