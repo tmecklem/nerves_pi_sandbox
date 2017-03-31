@@ -1,0 +1,16 @@
+/* This file is for your main application css. */
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+.btn-black {
+  background-color: black;
+  color: white;
+}
+.btn-red {
+  background-color: red;
+  color: white;
+}
+.btn-orange {
+  background-color: orange;
+  color: white;
+}
