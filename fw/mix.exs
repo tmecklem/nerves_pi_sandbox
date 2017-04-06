@@ -48,7 +48,7 @@ defmodule Fw.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   def deps do
-    [{:nerves, "~> 0.5.0", runtime: false}] ++
+    [{:nerves, "~> 0.5.1", runtime: false}] ++
     deps(@target)
   end
 
@@ -56,7 +56,7 @@ defmodule Fw.Mixfile do
   def deps("host"), do: []
   def deps("rpi0") do
     [{:nerves_runtime, "~> 0.1.0"},
-     {:nerves_system_rpi0, path: "/Users/tmecklem/src/nerves/nerves_system_rpi0", runtime: false},
+     {:"nerves_system_rpi0", github: "tmecklem/nerves_system_rpi0", tag: "v0.11.1", runtime: false},
      {:nerves_networking, github: "nerves-project/nerves_networking"},
      {:ui, path: "../ui"},
      {:elixir_ale, "~> 0.6.0"}]
