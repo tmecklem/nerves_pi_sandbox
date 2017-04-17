@@ -11,7 +11,7 @@ module.exports = {
   ],
   devtool: 'source-map',
   output: {
-    path: './priv/static',
+    path: __dirname + '/priv/static',
     filename: 'js/app.js'
   },
   module: {
@@ -51,4 +51,3 @@ module.exports = {
     extensions: ['.js', '.jsx']
   }
 };
-
