@@ -12,6 +12,17 @@
   </head>
 
   <body>
+    <div class="pinout-board">
+      <div class="pin" data-pin-type="3v-power" data-pin-status="">
+        <div class="pin__label"> 3.3v </div>
+        <div class="pin__marker"> </div>
+        <ul class="pin__menu">
+          <li class="pin__menu-item"> Set as input </li>
+          <li class="pin__menu-item"> Set as output </li>
+        </ul>
+      </div>
+    </div>
+
     <%= render @view_module, @view_template, assigns %>
       <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
