@@ -56,14 +56,7 @@ defmodule Fw.Mixfile do
   def deps("host"), do: []
   def deps("rpi0") do
     [{:nerves_runtime, "~> 0.1.0"},
-     {:"nerves_system_rpi0", github: "tmecklem/nerves_system_rpi0", tag: "v0.11.1", runtime: false},
-     {:nerves_networking, github: "nerves-project/nerves_networking"},
-     {:ui, path: "../ui"},
-     {:elixir_ale, "~> 0.6.0"}]
-  end
-  def deps(target) do
-    [{:nerves_runtime, "~> 0.1.0"},
-     {:"nerves_system_#{target}", "~> 0.11.0", runtime: false},
+     {:"rpi0_gadget_ethernet", github: "tmecklem/rpi0_gadget_ethernet", tag: "v0.12.0", runtime: false},
      {:nerves_networking, github: "nerves-project/nerves_networking"},
      {:ui, path: "../ui"},
      {:elixir_ale, "~> 0.6.0"}]
