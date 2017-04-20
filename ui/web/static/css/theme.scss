@@ -7,6 +7,7 @@ $themes: (
     'blue': #2c97de,
     'purple': #9c56b8,
     'ground': #33495f,
+    'text-color': #33495f,
     'background-color': #fff,
     'background-color-dark': #f2f4fc
   ),
@@ -18,7 +19,46 @@ $themes: (
     'blue': #198fe8,
     'purple': #8e63f9,
     'ground': #e9f4fa,
+    'text-color': #e9f4fa,
     'background-color': #283142,
     'background-color-dark': #1c2431
   )
 ) !default;
+
+// Themify mixin
+// @access private
+// @author Hugo Giraudel
+// @param {String} $property - Property to themify
+// @param {String} $key - Key color to use from theme
+// @param {Map} $themes [$themes] - Map of themes to use
+@mixin themify($property, $key, $themes: $themes) {
+  // Iterate over the themes
+  @each $theme, $colors in $themes {
+    // Create a selector (e.g. `.media.theme-unicorn, .theme-unicorn .media`)
+    &.theme-#{$theme},
+    .theme-#{$theme} & {
+      // Output the declaration
+      #{$property}: map-get($colors, $key);
+    }
+  }
+}
+
+// Shorthand to themify color through `themify` mixin
+// @access public
+// @see {mixin} themify
+// --------------------
+// Usage:
+// @include color('text-color');
+@mixin color($arguments...) {
+  @include themify('color', $arguments...);
+}
+
+// Shorthand to themify background-color through `themify` mixin
+// @access public
+// @see {mixin} themify
+// --------------------
+// Usage:
+// @include background-color('background-color');
+@mixin background-color($arguments...) {
+  @include themify('background-color', $arguments...);
+}
