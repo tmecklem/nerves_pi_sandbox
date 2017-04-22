@@ -1,6 +1,9 @@
 defmodule Ui.BoardChannel do
   use Ui.Web, :channel
 
+  alias PinServer.Pin
+  alias PinServer.PinServer
+
   def join("board", _params, socket) do
     {:ok, pins} = PinServer.get_status()
     pins_status = Enum.map(pins, fn (pin) -> Pin.serialize_pin(pin) end)

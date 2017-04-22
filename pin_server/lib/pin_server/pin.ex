@@ -1,4 +1,4 @@
-defmodule Pin do
+defmodule PinServer.Pin do
   defstruct pin_number: nil, gpio: nil, description: nil, characteristics: [], pid: nil, direction: nil, level: nil
 
   def configurable?(pin) do

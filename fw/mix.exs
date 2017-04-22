@@ -31,22 +31,13 @@ defmodule Fw.Mixfile do
   # applications which could cause the host to fail. Because of this, we only
   # invoke Fw.start/2 when running on a target.
   def application("host") do
-    [extra_applications: [:logger]]
+    [extra_applications: [:logger, :pin_server]]
   end
   def application(_target) do
     [mod: {Fw.Application, []},
-     extra_applications: [:logger, :nerves_networking]]
+     extra_applications: [:logger, :nerves_networking, :pin_server]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:my_dep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:my_dep, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   def deps do
     [{:nerves, "~> 0.5.1", runtime: false}] ++
     deps(@target)
@@ -58,6 +49,7 @@ defmodule Fw.Mixfile do
     [{:nerves_runtime, "~> 0.1.0"},
      {:"rpi0_gadget_ethernet", github: "tmecklem/rpi0_gadget_ethernet", tag: "v0.12.0", runtime: false},
      {:nerves_networking, github: "nerves-project/nerves_networking"},
+     {:pin_server, path: "../pin_server"},
      {:ui, path: "../ui"},
      {:elixir_ale, "~> 0.6.0"}]
   end

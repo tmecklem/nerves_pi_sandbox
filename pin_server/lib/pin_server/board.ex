@@ -1,8 +1,14 @@
-defmodule Board do
+defmodule PinServer.Board do
   defstruct name: nil, pins: []
 
-  def raspberry_pi do
-    %Board{
+  def board(:raspberry_pi), do: PinServer.Board.RaspberryPi.definition
+end
+
+defmodule PinServer.Board.RaspberryPi do
+  alias PinServer.Pin
+
+  def definition do
+    %PinServer.Board{
       name: 'Raspberry Pi',
       pins: [
         %Pin{pin_number: 01, gpio: nil, description: "3.3v",    characteristics: [:power_3v3]},

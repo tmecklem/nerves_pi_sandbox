@@ -1,8 +1,11 @@
-defmodule PinServer do
+defmodule PinServer.PinServer do
   use GenServer
 
-  def start_link(%Board{pins: pins}) do
-    GenServer.start_link(__MODULE__, %{pins: pins}, name: __MODULE__)
+  alias PinServer.Board
+  alias PinServer.Pin
+
+  def start_link(%Board{pins: pins}, pin_adapter) do
+    GenServer.start_link(__MODULE__, %{pins: pins, pin_adapter: pin_adapter}, name: __MODULE__)
   end
 
   def get_status() do
@@ -43,9 +46,9 @@ defmodule PinServer do
     {:reply, {:ok, pin}, state}
   end
 
-  def handle_call({:set_direction, pin_number, direction}, _from, state) do
+  def handle_call({:set_direction, pin_number, direction}, _from, state = %{pin_adapter: pin_adapter}) do
     pin = get_pin(pin_number, state)
-    updated_pin = %{pin | pid: spawn_input_adapter(pin, direction)}
+    updated_pin = %{pin | pid: spawn_input_adapter(pin, direction, pin_adapter)}
     pins = List.replace_at(state.pins, pin_number - 1, updated_pin)
     {:reply, {:ok, pin}, %{state | pins: pins}}
   end
@@ -63,8 +66,8 @@ defmodule PinServer do
     {:reply, {:ok, updated_pin}, %{state | pins: pins}}
   end
 
-  defp spawn_input_adapter(pin, direction) do
-    spawn(InputAdapter, :start, [self(), pin, direction])
+  defp spawn_input_adapter(pin, direction, pin_adapter) do
+    spawn(pin_adapter, :start, [self(), pin, direction])
   end
 
   defp get_pin(pin_number, %{pins: pins}) do
