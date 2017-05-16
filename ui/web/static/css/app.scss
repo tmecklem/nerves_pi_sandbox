@@ -39,6 +39,7 @@ body {
 //              PINS              \\
 // ------------------------------ \\
 .pinout-board {
+  position: relative;
   max-width: 480px;
   margin: auto;
   display: flex;
@@ -47,6 +48,19 @@ body {
   justify-content: center;
   align-items: flex-start;
   align-content: flex-start;
+  z-index: 2;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 80px;
+    height: 100%;
+    border: 1px solid #bdc3c7;
+    border-radius: $border-radius;
+    background-color: #f2f4fc;
+    transform: translateX(-50%);
+    z-index: -1;
+  }
 }
 
 .pin {
@@ -81,6 +95,9 @@ body {
   .pin:nth-of-type(odd) & {
     margin-right: 0;
     margin-left: $padding;
+  }
+  .pin:first-of-type & {
+    border-radius: $border-radius;
   }
 }
 
