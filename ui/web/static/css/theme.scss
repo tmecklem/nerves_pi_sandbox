@@ -66,3 +66,13 @@ $themes: (
 @mixin background-color($arguments...) {
   @include themify('background-color', $arguments...);
 }
+
+// Shorthand to themify border-color through `themify` mixin
+// @access public
+// @see {mixin} themify
+// --------------------
+// Usage:
+// @include border-color('border-color');
+@mixin border-color($arguments...) {
+  @include themify('border-color', $arguments...);
+}
