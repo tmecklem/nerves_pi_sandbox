@@ -1,8 +1,8 @@
 /* This file is for your main application css. */
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
 @import 'reset.scss';
-@import 'font.scss';
 @import 'variables.scss';
 @import 'theme.scss';
 
@@ -36,6 +36,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .pin {
   flex-basis: 50%;
   padding: $padding;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .pin__label {
@@ -62,7 +63,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
     border-radius: $border-radius;
   }
   &--title {
-    font-family: Cooper Hewitt;
     @include color('text-color');
   }
 }
