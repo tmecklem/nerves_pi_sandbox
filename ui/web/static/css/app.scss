@@ -20,6 +20,22 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 // ------------------------------ \\
+//              BASE              \\
+// ------------------------------ \\
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  @include color('text-color');
+}
+
+
+// ------------------------------ \\
 //              PINS              \\
 // ------------------------------ \\
 .pinout-board {
@@ -35,16 +51,46 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .pin {
   flex-basis: 50%;
+  display: flex;
+  align-items: center;
   padding: $padding;
-  font-family: 'Roboto Mono', monospace;
+  &:nth-of-type(odd) {
+    flex-direction: row-reverse;
+  }
+}
+
+.pin__marker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: $padding;
+  width: 24px;
+  height: 24px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  @include background-color('gray');
+  &:after {
+    content: "";
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+  }
+  .pin:nth-of-type(odd) & {
+    margin-right: 0;
+    margin-left: $padding;
+  }
 }
 
 .pin__label {
+  flex-grow: 1;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   align-content: flex-start;
   .pin:nth-of-type(odd) & {
     flex-direction: row-reverse;
@@ -65,4 +111,9 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   &--title {
     @include color('text-color');
   }
+}
+
+.pin__menu {
+  display: none;
+  position: absolute;
 }

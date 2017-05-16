@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body>
-    <div class="pinout-board theme-light">
+  <body class="theme-light">
+    <div class="pinout-board">
       <div class="pin" data-pin-type="3v-power" data-pin-status="">
+        <div class="pin__marker"> </div>
         <div class="pin__label">
           <span class="pin__label-item pin__label-item--title"> 3.3v </span>
           <span class="pin__label-item pin__label-item--outline"> DC Power </span>
           <span class="pin__label-item"> 1 </span>
         </div>
-        <div class="pin__marker"> </div>
         <ul class="pin__menu">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
@@ -27,12 +27,12 @@
       </div>
 
       <div class="pin" data-pin-type="5v-power" data-pin-status="">
+        <div class="pin__marker"> </div>
         <div class="pin__label">
           <span class="pin__label-item pin__label-item--title"> 5v </span>
           <span class="pin__label-item pin__label-item--outline"> DC Power </span>
           <span class="pin__label-item"> 2 </span>
         </div>
-        <div class="pin__marker"> </div>
         <ul class="pin__menu">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
@@ -40,13 +40,13 @@
       </div>
 
       <div class="pin" data-pin-type="i2c" data-pin-status="">
+        <div class="pin__marker"> </div>
         <div class="pin__label">
           <span class="pin__label-item pin__label-item--title"> GPIO02 </span>
           <span class="pin__label-item pin__label-item--outline"> SDA1 </span>
           <span class="pin__label-item pin__label-item--outline"> I<sup>2</sup>C </span>
           <span class="pin__label-item"> 3 </span>
         </div>
-        <div class="pin__marker"> </div>
         <ul class="pin__menu">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
@@ -54,12 +54,12 @@
       </div>
 
       <div class="pin" data-pin-type="5v-power" data-pin-status="">
+        <div class="pin__marker"> </div>
         <div class="pin__label">
           <span class="pin__label-item pin__label-item--title"> 5v </span>
           <span class="pin__label-item pin__label-item--outline"> DC Power </span>
           <span class="pin__label-item"> 4 </span>
         </div>
-        <div class="pin__marker"> </div>
         <ul class="pin__menu">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
