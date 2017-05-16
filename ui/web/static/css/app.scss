@@ -1,6 +1,8 @@
 /* This file is for your main application css. */
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+@import 'reset.scss';
+@import 'variables.scss';
 @import 'theme.scss';
 
 .btn-black {
@@ -14,4 +16,39 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .btn-orange {
   background-color: orange;
   color: white;
+}
+
+// ------------------------------ \\
+//              PINS              \\
+// ------------------------------ \\
+.pinout-board {
+  max-width: 480px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.pin {
+  flex-basis: 50%;
+  padding: $padding;
+}
+
+.pin__label {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  .pin:nth-of-type(odd) & {
+    flex-direction: row-reverse;
+  }
+}
+
+.pin__label-item {
+  padding: 0 $light-padding;
 }
