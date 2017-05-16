@@ -42,8 +42,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: flex-end;
   align-content: flex-start;
   .pin:nth-of-type(odd) & {
     flex-direction: row-reverse;
@@ -51,5 +51,18 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 .pin__label-item {
-  padding: 0 $light-padding;
+  margin: 0 $light-padding;
+  font-size: 16px;
+  line-height: 1;
+  @include color('light-text-color');
+  &--outline {
+    padding: ($light-padding / 2) $light-padding;
+    font-size: 12px;
+    border: 1px solid currentColor;
+    border-radius: $border-radius;
+  }
+  &--title {
+    font-family: Cooper Hewitt;
+    @include color('text-color');
+  }
 }
