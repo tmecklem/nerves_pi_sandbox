@@ -138,6 +138,51 @@ body {
   }
 }
 
+.pin__status-indicator {
+  position: relative;
+  visibility: hidden;
+  width: 0;
+  height: 1em;
+  line-height: 1;
+  opacity: 0;
+  transition: all 0.2s ease;
+  &:before {
+    position: absolute;
+    top: 0;
+    color: currentColor;
+  }
+  .pin[data-pin-direction="input"] &,
+  .pin[data-pin-direction="output"] & {
+    visibility: visible;
+    width: 1em;
+    opacity: 1;
+  }
+  .pin[data-pin-direction="input"] &:before {
+    content: "\276E";
+    left: 0;
+  }
+  .pin[data-pin-direction="output"] &:before {
+    content: "\276F";
+    left: 0;
+  }
+  .pin:nth-of-type(odd)[data-pin-direction="input"] &:before {
+    content: "\276F";
+    left: auto;
+    right: 0;
+  }
+  .pin:nth-of-type(odd)[data-pin-direction="output"] &:before {
+    content: "\276E";
+    left: auto;
+    right: 0;
+  }
+  .pin[data-pin-status="high"] & {
+    @include color('green');
+  }
+  .pin[data-pin-status="low"] & {
+    @include color('red');
+  }
+}
+
 .pin__label {
   flex-grow: 1;
   display: flex;
@@ -164,6 +209,12 @@ body {
   }
   &--title {
     @include color('text-color');
+    .pin[data-pin-status="high"] & {
+      @include color('green');
+    }
+    .pin[data-pin-status="low"] & {
+      @include color('red');
+    }
   }
 }
 
