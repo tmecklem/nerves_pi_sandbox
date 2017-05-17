@@ -21,7 +21,7 @@
           <span class="pin__label-item pin__label-item--outline"> DC Power </span>
           <span class="pin__label-item"> 1 </span>
         </div>
-        <ul class="pin__menu">
+        <ul class="pin__menu hidden">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
         </ul>
@@ -35,7 +35,7 @@
           <span class="pin__label-item pin__label-item--outline"> DC Power </span>
           <span class="pin__label-item"> 2 </span>
         </div>
-        <ul class="pin__menu">
+        <ul class="pin__menu hidden">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
         </ul>
@@ -50,7 +50,7 @@
           <span class="pin__label-item pin__label-item--outline"> I<sup>2</sup>C </span>
           <span class="pin__label-item"> 3 </span>
         </div>
-        <ul class="pin__menu">
+        <ul class="pin__menu hidden">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
         </ul>
@@ -64,7 +64,7 @@
           <span class="pin__label-item pin__label-item--outline"> DC Power </span>
           <span class="pin__label-item"> 4 </span>
         </div>
-        <ul class="pin__menu">
+        <ul class="pin__menu hidden">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
         </ul>
@@ -76,4 +76,40 @@
     <%= render @view_module, @view_template, assigns %>
       <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
+
+  <script type="text/javascript">
+    document.onclick = check;
+
+    function check(e){
+      var pins = document.querySelectorAll('div.pin');
+      var menus = document.querySelectorAll('ul.pin__menu');
+      var target = (e && e.target) || (event && event.srcElement);
+
+      for (i = 0; i < pins.length; ++i) {
+        var pin = pins[i];
+        var menu = menus[i];
+
+        if (!checkParent(target, menu)) {
+          // click NOT on the menu
+          if (checkParent(target, pin)) {
+            // click on the link
+            if (menu.classList.contains("hidden")) {
+              menu.classList.remove("hidden");
+            } else {menu.classList.add("hidden");}
+          } else {
+            // click both outside link and outside menu, hide menu
+            menu.classList.add("hidden");
+          }
+        }
+      }
+    }
+
+    function checkParent(t, elm) {
+      while(t.parentNode) {
+        if( t == elm ) {return true;}
+        t = t.parentNode;
+      }
+      return false;
+    }
+  </script>
 </html>

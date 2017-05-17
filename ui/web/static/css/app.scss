@@ -70,6 +70,7 @@ body {
   margin: 2px 0;
   padding: $padding;
   border-radius: 20px;
+  cursor: pointer;
   box-shadow: -($padding * 9) 0 100px 0 rgba(0,0,0,0);
   transition: background-color 0.1s ease, box-shadow 0.4s ease;
   &:hover {
@@ -219,6 +220,9 @@ body {
 }
 
 .pin__menu {
-  display: none;
   position: absolute;
+}
+
+.hidden {
+  display: none;
 }
