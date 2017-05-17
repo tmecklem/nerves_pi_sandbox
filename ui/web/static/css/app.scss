@@ -41,7 +41,7 @@ body {
 .pinout-board {
   position: relative;
   max-width: 480px;
-  margin: auto;
+  margin: ($padding * 10) auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -67,19 +67,21 @@ body {
   flex-basis: 50%;
   display: flex;
   align-items: center;
+  margin: 2px 0;
   padding: $padding;
   border-radius: 20px;
-  box-shadow: 0 0 100px 0 rgba(0,0,0,0);
+  box-shadow: -($padding * 9) 0 100px 0 rgba(0,0,0,0);
   transition: background-color 0.1s ease, box-shadow 0.4s ease;
+  &:hover {
+    box-shadow: -($padding * 3) 0 50px -10px rgba(0,0,0,0.2);
+    @include background-color('background-color');
+  }
   &:nth-of-type(odd) {
     flex-direction: row-reverse;
+    box-shadow: ($padding * 9) 0 100px 0 rgba(0,0,0,0);
     &:hover {
-      box-shadow: -10px 0 50px -10px rgba(0,0,0,0.2);
+      box-shadow: ($padding * 3) 0 50px -10px rgba(0,0,0,0.2);
     }
-  }
-  &:hover {
-    box-shadow: 10px 0 50px -10px rgba(0,0,0,0.2);
-    @include background-color('background-color');
   }
 }
 
