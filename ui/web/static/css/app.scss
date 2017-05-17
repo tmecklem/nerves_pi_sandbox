@@ -68,8 +68,18 @@ body {
   display: flex;
   align-items: center;
   padding: $padding;
+  border-radius: 20px;
+  box-shadow: 0 0 100px 0 rgba(0,0,0,0);
+  transition: background-color 0.1s ease, box-shadow 0.4s ease;
   &:nth-of-type(odd) {
     flex-direction: row-reverse;
+    &:hover {
+      box-shadow: -10px 0 50px -10px rgba(0,0,0,0.2);
+    }
+  }
+  &:hover {
+    box-shadow: 10px 0 50px -10px rgba(0,0,0,0.2);
+    @include background-color('background-color');
   }
 }
 
@@ -77,7 +87,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: $padding;
+  margin-right: $padding * 2;
   width: 24px;
   height: 24px;
   border: 1px solid currentColor;
@@ -94,7 +104,7 @@ body {
   }
   .pin:nth-of-type(odd) & {
     margin-right: 0;
-    margin-left: $padding;
+    margin-left: $padding * 2;
   }
   .pin:first-of-type & {
     border-radius: $border-radius;
