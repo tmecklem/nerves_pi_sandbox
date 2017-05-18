@@ -67,6 +67,7 @@ body {
   flex-basis: 50%;
   display: flex;
   align-items: center;
+  position: relative;
   margin: 2px 0;
   padding: $padding;
   border-radius: 20px;
@@ -221,6 +222,33 @@ body {
 
 .pin__menu {
   position: absolute;
+  left: ($padding-basis * 10);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 20px;
+  @include background-color('background-color');
+  .pin:nth-of-type(odd) & {
+    flex-direction: row-reverse;
+    left: auto;
+    right: ($padding-basis * 10);
+  }
+}
+
+.pin__menu-item {
+  padding: ($light-padding / 2) $light-padding;
+  font-size: 12px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: $border-radius;
+  transition: all 0.2s ease;
+  @include border-color('gray');
+  &:hover {
+    text-decoration: underline;
+    @include background-color('dark-background-color');
+  }
 }
 
 .hidden {
