@@ -223,17 +223,24 @@ body {
 .pin__menu {
   position: absolute;
   left: ($padding-basis * 10);
-  width: 100%;
+  width: 105%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
   border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.2s ease, width 0.1s 0.3s, visibility 0.1s 0.2s;
   @include background-color('background-color');
   .pin:nth-of-type(odd) & {
     flex-direction: row-reverse;
     left: auto;
     right: ($padding-basis * 10);
+  }
+  &:not(.invisible) {
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.2s ease, width 0.3s 0.1s ease-out;
   }
 }
 
@@ -243,14 +250,22 @@ body {
   border-width: 1px;
   border-style: solid;
   border-radius: $border-radius;
+  opacity: 0;
   transition: all 0.2s ease;
   @include border-color('gray');
   &:hover {
     text-decoration: underline;
     @include background-color('dark-background-color');
   }
+  .pin__menu:not(.invisible) & {
+    opacity: 1;
+  }
 }
 
 .hidden {
   display: none;
+}
+
+.invisible {
+  visibility: hidden;
 }

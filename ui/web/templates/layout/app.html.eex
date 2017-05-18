@@ -21,7 +21,7 @@
           <span class="pin__label-item pin__label-item--outline"> DC Power </span>
           <span class="pin__label-item"> 1 </span>
         </div>
-        <ul class="pin__menu hidden">
+        <ul class="pin__menu invisible">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
         </ul>
@@ -35,7 +35,7 @@
           <span class="pin__label-item pin__label-item--outline"> DC Power </span>
           <span class="pin__label-item"> 2 </span>
         </div>
-        <ul class="pin__menu hidden">
+        <ul class="pin__menu invisible">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
         </ul>
@@ -50,7 +50,7 @@
           <span class="pin__label-item pin__label-item--outline"> I<sup>2</sup>C </span>
           <span class="pin__label-item"> 3 </span>
         </div>
-        <ul class="pin__menu hidden">
+        <ul class="pin__menu invisible">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
         </ul>
@@ -64,7 +64,7 @@
           <span class="pin__label-item pin__label-item--outline"> DC Power </span>
           <span class="pin__label-item"> 4 </span>
         </div>
-        <ul class="pin__menu hidden">
+        <ul class="pin__menu invisible">
           <li class="pin__menu-item"> Set as input </li>
           <li class="pin__menu-item"> Set as output </li>
         </ul>
@@ -93,12 +93,12 @@
           // click NOT on the menu
           if (checkParent(target, pin)) {
             // click on the link
-            if (menu.classList.contains("hidden")) {
-              menu.classList.remove("hidden");
-            } else {menu.classList.add("hidden");}
+            if (menu.classList.contains("invisible")) {
+              menu.classList.remove("invisible");
+            } else {menu.classList.add("invisible");}
           } else {
             // click both outside link and outside menu, hide menu
-            menu.classList.add("hidden");
+            menu.classList.add("invisible");
           }
         }
       }
