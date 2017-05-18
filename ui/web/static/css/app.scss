@@ -85,6 +85,9 @@ body {
       box-shadow: ($padding * 3) 0 50px -10px rgba(0,0,0,0.2);
     }
   }
+  &.disabled {
+    cursor: default;
+  }
 }
 
 .pin__marker {
@@ -246,6 +249,9 @@ body {
     box-shadow: 0 0 50px rgba(255,255,255,0);
     transform: scale(0.5);
     transition: all 0.3s 0.2s ease-out;
+  }
+  .pin.disabled & {
+    display: none;
   }
 }
 
