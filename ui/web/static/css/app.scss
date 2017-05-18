@@ -276,10 +276,14 @@ body {
   .pin__menu.invisible & {
     opacity: 0;
     transform: translateX(-$padding * 2) scaleX(0.97);
-    transition: opacity 0.3s ease, transform 0.3s 0.1s cubic-bezier(0.25, 0, 1, 0.2);
+    transition: opacity 0.3s ease, transform 0.3s 0.1s cubic-bezier(0.25, 0, 1, 0);
     .pin:nth-of-type(odd) & {
       transform: translateX($padding * 2) scaleX(0.97);
     }
+  }
+  &.active {
+    @include background-color('dark-background-color');
+    @include border-color('text-color');
   }
 }
 
