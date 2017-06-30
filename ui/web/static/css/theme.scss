@@ -11,8 +11,10 @@ $themes: (
     'gray': #bdc3c7,
     'text-color': #33495f,
     'light-text-color': #bdc3c7,
+    'border-color': #bdc3c7,
     'background-color': #fff,
-    'dark-background-color': #f2f4fc
+    'dark-background-color': #f2f4fc,
+    'board-background-color': #f2f4fc
   ),
   'dark': (
     'red': #ed2d34,
@@ -25,9 +27,11 @@ $themes: (
     'ground': #bdc3c7,
     'gray': #798389,
     'text-color': #e9f4fa,
+    'border-color': #1c2431,
     'light-text-color': #798389,
     'background-color': #283142,
-    'dark-background-color': #1c2431
+    'dark-background-color': #1c2431,
+    'board-background-color': #384859
   )
 ) !default;
 
@@ -77,4 +81,20 @@ $themes: (
 // @include border-color('border-color');
 @mixin border-color($arguments...) {
   @include themify('border-color', $arguments...);
+}
+
+// Map deep get
+// @author Hugo Giraudel
+// @access public
+// @param {Map} $map - Map
+// @param {Arglist} $keys - Key chain
+// @return {*} - Desired value
+// --------------------
+// Usage:
+// background-color: map-deep-get($themes, "dark", "dark-background-color");
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
 }
