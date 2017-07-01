@@ -84,15 +84,24 @@ body {
   cursor: pointer;
   box-shadow: -($padding * 9) 0 100px 0 rgba(0,0,0,0);
   transition: background-color 0.1s ease, box-shadow 0.4s ease;
-  &:hover {
-    box-shadow: -($padding * 3) 0 50px -10px rgba(0,0,0,0.2);
+  &:hover, &.selected:not(.disabled) {
+    box-shadow: -($padding * 3) 0 50px -10px darken(map-deep-get($themes, 'light', 'dark-background-color'), 15%);
     @include background-color('background-color');
+    .theme-dark & {
+      box-shadow: -$padding 0 50px -10px darken(map-deep-get($themes, 'dark', 'dark-background-color'), 15%);
+    }
+  }
+  &:hover {
+    z-index: 2;
   }
   &:nth-of-type(odd) {
     flex-direction: row-reverse;
     box-shadow: ($padding * 9) 0 100px 0 rgba(0,0,0,0);
-    &:hover {
-      box-shadow: ($padding * 3) 0 50px -10px rgba(0,0,0,0.2);
+    &:hover, &.selected:not(.disabled) {
+      box-shadow: ($padding * 3) 0 50px -10px darken(map-deep-get($themes, 'light', 'dark-background-color'), 15%);
+      .theme-dark & {
+        box-shadow: $padding 0 50px -10px darken(map-deep-get($themes, 'dark', 'dark-background-color'), 15%);
+      }
     }
   }
   &.disabled {
@@ -101,6 +110,10 @@ body {
 }
 
 .pin__marker {
+  .pin:not(.disabled).selected & {
+    transform: scale(1.25);
+    transition: all 0.2s ease-out;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,6 +122,7 @@ body {
   height: 24px;
   border: 1px solid currentColor;
   border-radius: 50%;
+  transition: all 0.075s ease-in;
   @include background-color('gray');
   .theme-dark & {
     border-color: map-deep-get($themes, 'dark', 'border-color');
@@ -280,20 +294,23 @@ body {
   justify-content: space-around;
   border-radius: 20px;
   opacity: 1;
-  box-shadow: 0 0 0 rgba(255,255,255,1);
+  box-shadow: 0 0 0 map-deep-get($themes, 'light', 'background-color');
   transform: scale(1);
   transform-origin: left center;
   transition: all 0.4s ease-out;
   @include background-color('background-color');
+  .theme-dark & {
+    box-shadow: 0 0 0 map-deep-get($themes, 'dark', 'background-color');
+  }
   .pin:nth-of-type(odd) & {
     flex-direction: row-reverse;
     left: auto;
     right: ($padding-basis * 10);
     transform-origin: right center;
   }
-  &.invisible {
+  .pin:not(.selected) & {
     opacity: 0;
-    box-shadow: 0 0 50px rgba(255,255,255,0);
+    box-shadow: 0 0 50px transparent;
     transform: scale(0.5);
     transition: all 0.3s 0.2s ease-out;
   }
@@ -320,13 +337,13 @@ body {
     transition: background-color 0.1s ease;
     @include background-color('dark-background-color');
   }
-  .pin__menu.invisible & {
+  .pin:not(.selected) & {
     opacity: 0;
     transform: translateX(-$padding * 2) scaleX(0.97);
     transition: opacity 0.3s ease, transform 0.3s 0.1s cubic-bezier(0.25, 0, 1, 0);
-    .pin:nth-of-type(odd) & {
-      transform: translateX($padding * 2) scaleX(0.97);
-    }
+  }
+  .pin:nth-of-type(odd):not(.selected) & {
+    transform: translateX($padding * 2) scaleX(0.97);
   }
   &.active {
     @include background-color('dark-background-color');

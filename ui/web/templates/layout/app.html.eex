@@ -12,7 +12,7 @@
   </head>
 
   <body class="theme-light">
-    <div class="container">
+    <div class="container" style="margin-bottom: 20px;">
       <div class="pinout-board">
         <div class="pin disabled" data-pin-type="3v" data-pin-direction="" data-pin-status="">
           <div class="pin__marker"> </div>
@@ -96,10 +96,15 @@
             // click on the link
             if (menu.classList.contains("invisible")) {
               menu.classList.remove("invisible");
-            } else {menu.classList.add("invisible");}
+              pin.classList.add("selected");
+            } else {
+              menu.classList.add("invisible");
+              pin.classList.remove("selected");
+            }
           } else {
             // click both outside link and outside menu, hide menu
             menu.classList.add("invisible");
+            pin.classList.remove("selected");
           }
         }
       }
