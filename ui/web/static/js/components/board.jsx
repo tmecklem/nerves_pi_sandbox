@@ -25,18 +25,14 @@ export default class Board extends React.Component {
 
   renderRow(row, index) {
     return (
-      <div key={index} className="row">
-        <div className="col-xs-2"></div>
+      <div key={index} >
         {
           row.map((pin, column) =>
-            <div key={`${pin}-${column}`} className="col-xs-4">
-              <Pin key={pin.pin_number}
-                   pin_number={pin.pin_number}
-                   side={column % 2 == 0 ? 'left' : 'right'}
-                   direction={pin.direction}
-                   level={pin.level}
-                   />
-            </div>
+            <Pin key={pin.pin_number}
+                 pin_number={pin.pin_number}
+                 direction={pin.direction}
+                 level={pin.level}
+                 />
           )
         }
       </div>
