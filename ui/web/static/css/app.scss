@@ -105,7 +105,7 @@ body {
     }
   }
   &.disabled {
-    cursor: default;
+    cursor: not-allowed;
   }
 }
 
@@ -274,6 +274,9 @@ body {
     @include color('text-color');
     .pin[data-pin-status="high"] & {
       @include color('green');
+    }
+    .pin:not(.disabled):hover & {
+      text-decoration: underline;
     }
     .pin[data-pin-status="low"] & {
       @include color('red');
