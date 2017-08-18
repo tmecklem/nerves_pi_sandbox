@@ -38,9 +38,22 @@ body {
 }
 
 .container {
+  position: relative;
   box-shadow: 0 0 50px -15px rgba(0,0,0,0.2);
   transition: background-color 1.5s;
   @include background-color('background-color');
+}
+
+.button {
+  position: absolute;
+  top: $padding;
+  right: $padding;
+  font-size: 80%;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: $border-radius;
+  @include border-color('border-color');
+  @include background-color('board-background-color');
 }
 
 

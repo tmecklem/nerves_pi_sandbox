@@ -14,7 +14,7 @@
   <body id="js-theme-target" class="theme-light">
     <div class="container" style="margin-bottom: 20px;">
 
-      <button type="button" name="toggle" id="js-toggle-control" data-toggle="theme" data-target="#theme-target" onClick="toggleTheme()"> Toggle Theme </button>
+      <button type="button" name="toggle" id="js-toggle-control" class="button" data-toggle="theme" data-target="#theme-target" onClick="toggleTheme()"> Toggle Theme </button>
 
       <div class="pinout-board">
         <div class="pin disabled" data-pin-type="3v" data-pin-direction="" data-pin-status="">
