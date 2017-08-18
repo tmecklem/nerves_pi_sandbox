@@ -105,11 +105,15 @@ body {
     }
   }
   &.disabled {
-    cursor: not-allowed;
+    cursor: default;
   }
 }
 
 .pin__marker {
+  .pin:not(.disabled).selected & {
+    transform: scale(1.25);
+    transition: all 0.2s ease-out;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,10 +147,10 @@ body {
     border-radius: $border-radius;
   }
   // --- PIN COLORS --- \\
-  .pin[data-pin-type="power_3v3"] & {
+  .pin[data-pin-type="3v"] & {
     @include background-color('dark-red');
   }
-  .pin[data-pin-type="power_5v"] & {
+  .pin[data-pin-type="5v"] & {
     @include background-color('red');
   }
   .pin[data-pin-type="i2c"] & {
@@ -176,7 +180,6 @@ body {
   height: 1em;
   line-height: 1;
   opacity: 0;
-  z-index: 10;
   transition: all 0.2s ease;
   &:before {
     position: absolute;
@@ -275,9 +278,6 @@ body {
     .pin[data-pin-status="high"] & {
       @include color('green');
     }
-    .pin:not(.disabled):hover & {
-      text-decoration: underline;
-    }
     .pin[data-pin-status="low"] & {
       @include color('red');
     }
@@ -285,10 +285,9 @@ body {
 }
 
 .pin__menu {
-  $offset: ($padding-basis * 15);
   position: absolute;
-  left: $offset;
-  width: calc(100% - #{$offset});
+  left: ($padding-basis * 10);
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
